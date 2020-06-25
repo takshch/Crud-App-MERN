@@ -26,17 +26,6 @@ app.listen(process.env.PORT || 5000, () => {
     });
 });
 
-
-if (process.env.NODE_ENV === 'production') {
-    // Serve any static files
-    app.use(Express.static(path.join(__dirname, 'client/build')));
-  // Handle React routing, return all requests to React app
-    app.get('*', function(req, res) {
-      res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-    });
-}
-
-
 app.get("/api/", (request, response) => {
     response.send(`API ENDPOINTS:<br />
         - - - -  "/items" -- to fetch all items<br />
@@ -146,3 +135,20 @@ app.post("/api/delete",(req, response)=>{
         response.send({error: "id must be number"});
     }
 });
+
+
+
+
+
+
+if (process.env.NODE_ENV === 'production') {
+    // Serve any static files
+    app.use(Express.static(path.join(__dirname, 'client/build')));
+  // Handle React routing, return all requests to React app
+    app.get('*', function(req, res) {
+      res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+    });
+}
+
+
+
