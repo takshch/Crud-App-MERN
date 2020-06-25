@@ -13,7 +13,6 @@ app.use(BodyParser.json());
 app.use(BodyParser.urlencoded({ extended: true }));
 var database, collection;
 
-var autoIncrement = require("mongodb-autoincrement");
 const { response, request } = require("express");
 
 app.listen(process.env.PORT || 5000, () => {
