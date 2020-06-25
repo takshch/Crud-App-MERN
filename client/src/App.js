@@ -215,17 +215,21 @@ export default class App extends React.Component{
                  <ColInnerWrapper>
                   <h4 className="text-center">CRUD APPLICATION</h4>
                   <AddWrapper>
-                    <input type="text" placeholder="Enter product name"
-                      onChange={this.setCurrentName.bind(this)}/>
-                    <input type="text" placeholder="Enter price"
-                      onChange={this.setCurrentPrice.bind(this)}/>
-                    <input type="submit" value="Add" onClick={this.addItem.bind(this)}/>
+                    <div>
+                      <input type="text" placeholder="Product name"
+                        onChange={this.setCurrentName.bind(this)}/>
+                    </div>
+                    <div>
+                      <input type="text" placeholder="Price"
+                        onChange={this.setCurrentPrice.bind(this)}/>
+                    </div>
+                    <button className="btn" onClick={this.addItem.bind(this)}>Add</button>
                   </AddWrapper>
                   <div>
         {this.state.message !== "" ? <Alert variant={this.state.messageClass}>{this.state.message}</Alert> : ""}
                     {this.state.errorMessage !== "" ? <h4 className="text-center">{this.state.errorMessage}</h4>: ""}
                     {this.state.isListLoading ? <h4 className="text-center">Loading....</h4> : wrapperList}
-                  <p style={{"font-size":"1.05rem"}} className="mt-4">Note: To update the price, click on price and change the value and  <br />then click on blue background.</p>
+                  <p style={{"font-size":"1.05rem","color":"#000"}} className="mt-4">Note: To update the price, click on price and change the value and  <br />then click on blue background.</p>
                   </div>
                  </ColInnerWrapper>
               </ColOutWrapper>
@@ -315,7 +319,8 @@ const WrappedList = styled.div`
   }
 `;
 
-const AddWrapper = styled.div`
+const AddWrapper = styled.div`  
+  display: flex;
   margin: 30px auto;
   padding: 10px;
   border: none;
@@ -324,8 +329,14 @@ const AddWrapper = styled.div`
   color: #fff;
   box-shadow: 1px 1px 44px -12px rgba(255,255,255,0.6);
   background: #ef476f;
-  
-  > input {
+  > div:nth-of-type(1){
+    flex: 4;
+  }
+  > div:nth-of-type(2){
+    flex: 2;
+  }
+  > div > input {
+    width: 100%;
     border: none;
     background: inherit;
     outline: none;
@@ -333,16 +344,17 @@ const AddWrapper = styled.div`
     padding-left: 10px;
     margin: auto 5px;
   }
-  > input::placeholder{
+  > div > input::placeholder{
     color: #fff;
   }
-  > input:nth-child(1){
+  > div:nth-child(1) > input{
     border-right: 2px solid #fdfffc;
   }
-  > input[type="submit"]{
+  > button{
+    flex: 1;
     min-width: 80px;
     border: none; 
-    outline: none;
+    outline: none !important;
     background: #fca311;
     padding: 3px 0px;
     background-color: #fca311;
@@ -350,9 +362,14 @@ const AddWrapper = styled.div`
     box-shadow: 1px 1px 0px 1px rgba(0,0,0,0.05);
     color:#fff;
   }
-  >  input[type="submit"]:active{
+  >  button:active{
       box-shadow: 2px 2px 0px 1px rgba(0,0,0,0.05),-2px -2px 0px 1px rgba(0,0,0,0.05);
       background: #ff9f1c;
+      outline: none;
+      color: #e63946;
+  }
+  > button:hover{
+    color: #fff;
   }
 `;
 
