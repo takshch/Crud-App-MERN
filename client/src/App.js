@@ -263,6 +263,7 @@ const APIStory = styled.div`
    padding: 0px 15px; 
    padding-top: 30px;
    height:  100%;
+   color: #000;
    background: #f1faee;
    backgrond-color: #f1faee;
 `;
