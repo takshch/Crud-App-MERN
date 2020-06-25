@@ -288,12 +288,12 @@ const WrappedList = styled.div`
   display: flex;
   > *{
     flex: 1;
-    flex-shrink: 0;
   }
   > span:nth-of-type(1){
     font-size: 1.13rem;
     margin: auto;
     margin-left: 10px;
+    flex: 2;
   }
   > span:nth-of-type(1){
     border-right: 2px solid #fff;
@@ -316,6 +316,7 @@ const WrappedList = styled.div`
     background: inherit;
     background-color: inherit;
     color: inherit;
+    text-align: center;
   }
 `;
 
