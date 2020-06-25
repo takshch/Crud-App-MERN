@@ -1,8 +1,10 @@
 const Express = require("express");
 const BodyParser = require("body-parser");
 const MongoClient = require("mongodb").MongoClient;
-var autoIncrement = require("mongodb-autoincrement");
+const path = require('path');
+const autoIncrement = require("mongodb-autoincrement");
 const ObjectId = require("mongodb").ObjectID;
+
 const CONNECTION_URL = `mongodb://fidisys-api:!%403asflkj4%23sfslkms%23@ds129023.mlab.com:29023/heroku_s9zfc9ft`;
 const COLLECTION_NAME = "items";
 
