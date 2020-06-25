@@ -266,6 +266,9 @@ const APIStory = styled.div`
    color: #000;
    background: #f1faee;
    backgrond-color: #f1faee;
+   > h4{
+     color: #000;
+   }
 `;
 
 
