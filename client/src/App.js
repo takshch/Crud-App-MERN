@@ -166,8 +166,13 @@ export default class App extends React.Component{
       console.log("okay");
       e.target.innerText = value;
       this.setState({prevPrice: null});      
-    }else if(!isNaN(value) && value !== "" && id !== "" && !isNaN(id)){
+    }else if(!isNaN(value) && value !== "" && id !== "" && !isNaN(id) && parseInt(value) !== this.state.prevPrice){
       this.updateItem(parseInt(value),parseInt(id));
+    }
+    else if(parseInt(value) !== this.state.prevPrice){
+      e.target.innerText = this.state.prevPrice;
+      this.setState({message: "Price must be number",messageClass: "dark"});
+      this.messageNull(8000);
     }
   }
   
@@ -175,11 +180,11 @@ export default class App extends React.Component{
     console.log("par");
     let price = e.target.innerText;
     if(price !== "" && isNaN(price) && this.state.prevPrice !== ""){
+      console.log("prevState");
       this.setState({message: "Price must be number",messageClass: "dark"});
-      e.target.innerText = this.state.prevPrice;
       this.messageNull();
+      e.target.innerText = this.state.prevPrice;
     }else{
-
       this.setState({currentPrice: parseInt(price)});
     }
   }
