@@ -70,8 +70,8 @@ export default class App extends React.Component{
 
   async addItem(e){
     let parent = e.target.parentNode.childNodes;
-    let name = parent[0].value;
-    let price  = parent[1].value;
+    let name = parent[0][0].value;
+    let price  = parent[1][0].value;
     console.log(`name: ${name}, price: ${price}`);
     if(name !== "" && price !== "" && !isNaN(price)){
       let postBody  = JSON.stringify({name,price: parseInt(price)});
@@ -95,7 +95,7 @@ export default class App extends React.Component{
       }
       this.fetchList();
       this.messageNull(10000);
-    }else if(name === "" || price === "" || isNaN(price)){
+    }else if(name === "" || price === "" || name === undefined || price === undefined || isNaN(price)){
       this.setState({message: "name and price can't be empty or price must be number",messageClass: "dark"});
     }else{
       this.setState({message: "price",messageClass: "dark"});
