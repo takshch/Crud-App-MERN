@@ -70,8 +70,10 @@ export default class App extends React.Component{
 
   async addItem(e){
     let parent = e.target.parentNode.childNodes;
-    let name = parent[0][0].value;
-    let price  = parent[1][0].value;
+    let name = parent[0].childNodes[0].value;
+    let price  = parent[1].childNodes[0].value;
+    // console.log("parent:",parent);
+    console.log(`name: ${name}, price: ${price}`);
     console.log(`name: ${name}, price: ${price}`);
     if(name !== "" && price !== "" && !isNaN(price)){
       let postBody  = JSON.stringify({name,price: parseInt(price)});
